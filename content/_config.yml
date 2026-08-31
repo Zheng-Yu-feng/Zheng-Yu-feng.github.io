@@ -117,7 +117,7 @@ theme_config:
         url: /
       - id: archives
         theme: '#3b82f6'
-        icon: default:archive
+        icon: default:documents
         title: 归档
         url: /archives/
       - id: tags
@@ -168,4 +168,3 @@ deploy:
   type: git
   repository: git@github.com:Zheng-Yu-feng/Zheng-Yu-feng.github.io.git
   branch: main
-

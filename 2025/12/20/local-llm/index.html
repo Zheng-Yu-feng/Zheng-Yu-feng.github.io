@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>local_llm（用户操作手册） | Yufeng's blog</title><meta name="author" content="Zheng Yufeng,3054661346@qq.com"><meta name="copyright" content="Zheng Yufeng"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="用户操作手册：使用Flask+VUE搭建本地大语言模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="local_llm（用户操作手册）">
+<meta property="og:url" content="http://example.com/2025/12/20/local-llm/index.html">
+<meta property="og:site_name" content="Yufeng&#39;s blog">
+<meta property="og:description" content="用户操作手册：使用Flask+VUE搭建本地大语言模型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/image/local_llm.png">
+<meta property="article:published_time" content="2025-12-20T07:04:14.000Z">
+<meta property="article:modified_time" content="2025-12-20T09:10:35.165Z">
+<meta property="article:author" content="Zheng Yufeng">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Interactive system">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/local_llm.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "local_llm（用户操作手册）",
+  "url": "http://example.com/2025/12/20/local-llm/",
+  "image": "http://example.com/image/local_llm.png",
+  "datePublished": "2025-12-20T07:04:14.000Z",
+  "dateModified": "2025-12-20T09:10:35.165Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Zheng Yufeng",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/12/20/local-llm/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'local_llm（用户操作手册）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Yufeng's blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/image/local_llm.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Yufeng's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">local_llm（用户操作手册）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">local_llm（用户操作手册）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-20T07:04:14.000Z" title="发表于 2025-12-20 15:04:14">2025-12-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-20T09:10:35.165Z" title="更新于 2025-12-20 17:10:35">2025-12-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/project/">project</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><p>本用户操作手册的编写目的是为“大语言模型用户交互工具”的使用者提供一份完整、清晰且可操作的参考文档。通过阅读本手册，读者无需了解底层实现细节，即可理解系统的定位与功能，掌握从启动系统到完成日常智能对话、文档问答与结果导出的基本操作流程。手册既服务于普通业务用户，也面向负责部署和维护系统的技术人员与运维人员，希望在实际使用中为减少沟通成本、提高使用效率、保障系统稳定运行提供统一的依据。</p>
+<p>本手册主要面向四类读者：日常使用系统进行对话和文档分析的业务用户，需要在已有功能基础上继续开发或调优模型调用逻辑的技术研发人员，承担安装部署、监控维护和问题处理任务的系统管理员与运维人员，以及需要根据系统功能与操作流程设计测试用例的测试与质量保障人员。普通用户更关注“如何登录、如何选择模型、如何上传文档并获得回答”等操作性内容；技术人员和管理员则在此基础上，还会结合部署章节和设计类文档，关注运行环境、部署方式和系统结构。</p>
+<p>“大语言模型用户交互工具”本身是一个基于 Vue 3 前端和 Python Flask 后端构建的本地化大模型交互系统，支持私有化部署，能够在局域网甚至离线环境下运行。系统集成了多种开源大语言模型，例如 Qwen、Baichuan、Yi、Mistral、Zephyr 以及九格等，用户可以在统一界面中自由切换模型，并通过多轮对话、文档上传和参数调节完成各类智能问答任务。与依赖外部云端 API 的在线服务相比，本系统更强调数据安全和可控性，适合对隐私与合规要求较高的应用场景。</p>
+<p>本手册的整体结构与系统生命周期相对应：第一章对编写目的、读者对象以及系统整体定位进行概述；第二章从用户视角介绍系统背景、功能和整体架构，使读者对“这是什么系统、能做什么、大致怎么运行”有一个清晰印象；第三章重点介绍系统的部署方式和软硬件环境要求，说明如何在本地环境和 Docker 环境中将系统正确运行起来。第四章主要介绍用户操作此系统的详细步骤。</p>
+<h1 id="2-系统介绍"><a href="#2-系统介绍" class="headerlink" title="2. 系统介绍"></a>2. 系统介绍</h1><p>本章从使用者的角度，对“大语言模型用户交互工具”的背景、设计目标、主要功能和整体运行方式进行介绍，帮助读者在不接触源码的前提下理解系统是什么、解决什么问题、具备哪些能力以及大致如何工作。</p>
+<p>在项目背景方面，系统诞生于当前企业和科研机构对数据安全与隐私保护日益重视的环境之下。许多组织希望充分利用大语言模型的强大能力，却又不希望将业务数据和敏感文档上传到外部公有云服务。针对这一矛盾，本系统选择基于本地可部署的开源模型构建统一的交互平台。系统的目标是，在兼顾安全与性能的前提下，为用户提供一个可以在 Windows 和 Linux 平台上稳定运行、可在本地或局域网内部署、可灵活接入多种开源模型的统一交互工具，满足日常问答、文档分析与辅助创作等多种使用需求。</p>
+<p>从功能角度看，系统围绕“多模型聊天”“文档问答”“会话管理”“参数控制”和“历史导出”等核心场景进行设计。用户首先通过登录页面进入系统主界面，在一个类似即时通讯的对话窗口中与选定的大语言模型进行自然语言对话。系统预先集成了 Qwen、Baichuan、Yi、Mistral、Zephyr 和九格等至少六种、参数规模不低于 7B 的开源大模型，用户可以根据任务偏好在界面中随时切换当前使用的模型，不同模型的回答风格和擅长领域也各不相同。为了更好地服务多轮对话场景，系统提供会话管理功能，用户可以为不同话题分别建立对话会话，查看和切换历史会话，也可以删除不再需要的记录。除了直接输入问题外，系统还支持上传文本文档等文件，自动抽取文本内容并将其纳入当前会话上下文，用户可以围绕文档内容进行摘要、问答或条目提取等操作。对于模型生成行为，系统提供温度、top_p、top_k、最大生成长度等参数调节入口，方便用户在“更稳定严谨”与“更有创造性”的输出风格之间进行调节。当对话内容需要保存和归档时，系统还支持将某个会话导出为文件，便于后续整理、分享或溯源。</p>
+<p>在系统架构与运行模式方面，本系统采用前后端分离的设计思路，前端使用 Vue 3 及相关组件库构建单页面应用，通过浏览器呈现聊天界面、会话列表、模型选择与参数设置等交互元素，负责接收用户输入、触发操作并展示结果。后端基于 Python Flask 实现 Web 服务接口，负责接收前端请求、校验参数、组织上下文并调用模型推理逻辑。模型推理部分通过深度学习框架加载本地大语言模型权重，按当前用户选择的模型和参数生成回答，同时可以利用 Redis 等缓存组件加速对话历史的读取和上下文管理。整体来看，用户在浏览器中的每一次发送操作，背后都由前端组装请求并调用后端接口，后端再调度对应的模型执行推理并将生成结果返回，最终在界面上以对话气泡的形式呈现。</p>
+<p>在运行平台与部署方式上，系统兼容 Windows 和 Linux 两类常用操作系统，提供本地部署和 Docker 部署两条等价的路径。对于倾向于直接在本机调试和开发的用户，可以在安装 Conda 等工具后通过 environment.yml 创建 Python 环境，下载六个模型文件到指定目录，使用 python app.py 启动服务，并在浏览器访问 <a href="http://127.0.0.1:5000。">http://127.0.0.1:5000。</a> 对于更关注环境一致性和跨机器迁移的用户，可以选择 Docker 方案：在目标机器上安装 Docker 和 Docker Compose，准备好 Redis 服务和模型文件目录后，通过 docker compose up -d –build 一键启动所有服务，同样通过浏览器访问同一地址即可。第三章对这两种部署方式的软硬件要求和操作步骤作了详细说明，普通用户通常只需要在系统已经部署完成后，记住访问地址和基本使用流程即可。</p>
+<p>从典型使用过程来看，用户在系统部署完成后，只需打开浏览器、访问系统地址并完成登录，就可以在主界面中选择希望使用的大语言模型，按需调节生成参数，然后像与智能助手聊天一样提出问题、粘贴文本或上传文件。系统会自动记录和展示对话历史，支持在多个会话和不同模型之间自由切换。在此基础上，用户不必关心底层模型加载和资源调度的具体细节，便可以在一个统一、安全、可控的环境中持续利用本地大语言模型的能力开展日常工作与研究探索。</p>
+<h1 id="3-系统部署"><a href="#3-系统部署" class="headerlink" title="3. 系统部署"></a>3. 系统部署</h1><p>本节对系统在不同环境下的部署方法进行详细说明，包括软硬件环境要求、本地部署流程以及基于 Docker 的容器化部署流程。系统当前支持两种等价的部署方式：<br> （1）基于 Conda 的本地部署；（2）基于 Docker 的容器化部署。</p>
+<p>无论采用哪一种方式，系统最终均通过浏览器访问地址 <a target="_blank" rel="noopener" href="http://127.0.0.1:5000/">http://127.0.0.1:5000</a> 提供服务。当前实现中未使用环境变量进行配置，涉及模型路径、服务端口与 Redis 连接信息等均在代码或配置文件中固定给出，因此部署过程相对稳定、可控。</p>
+<h2 id="3-1部署架构与运行模式概述"><a href="#3-1部署架构与运行模式概述" class="headerlink" title="3.1部署架构与运行模式概述"></a>3.1部署架构与运行模式概述</h2><p>系统整体上可视为一个提供推理服务的 Web 应用：后端负责加载六个预训练模型并对输入数据进行处理，前端通过 HTTP 接口与后端交互。</p>
+<p>在本地部署模式下，所有组件直接运行在宿主操作系统之上，开发者通过 Conda 管理 Python 环境，使用 python app.py 启动服务即可。该方式便于调试和快速迭代代码，适合作为研究与开发阶段的主要运行模式。</p>
+<p>在 Docker 部署模式下，应用运行所需的运行时环境、依赖库和代码被打包进 Docker 镜像中，用户仅需准备 Docker 服务、Redis 服务以及必要的模型文件，即可通过 docker compose up -d –build 启动系统。该方式具有更好的可移植性与环境一致性，适合在不同物理机器、不同操作系统上进行复现与部署。</p>
+<h2 id="3-2-系统软硬件环境要求"><a href="#3-2-系统软硬件环境要求" class="headerlink" title="3.2 系统软硬件环境要求"></a>3.2 系统软硬件环境要求</h2><p><strong>硬件环境：</strong></p>
+<p>系统主要执行模型推理与轻量级 Web 服务，对 CPU、内存和存储空间有一定要求。结合当前实验与测试情况，建议的硬件配置如下：</p>
+<p>处理器：建议使用 64 位多核 CPU，推荐不少于 4 个物理核心，以保障模型加载及并发请求时的响应速度。</p>
+<p>内存：建议不低于 16 GB。系统需同时加载六个预训练模型，较大的内存可以有效减少频繁的模型卸载与重加载，保证推理过程稳定。</p>
+<p>存储空间：需预留足够磁盘空间用于存放六个模型文件、日志文件及中间结果。根据模型大小，建议专门为模型目录预留至少数十 GB 的可用空间，并预留额外空间用于后续扩展。</p>
+<p>GPU：若部署环境中配备支持主流深度学习框架的 GPU（如支持 CUDA 的显卡），可在本地部署模式下启用 GPU 推理，进一步降低响应时延、提升系统吞吐量。系统未强制依赖 GPU，在仅有 CPU 的环境中仍可正常运行。</p>
+<p>对于仅用于功能验证或小规模测试的桌面环境，可适当降低配置要求，但需注意模型加载时间与推理耗时可能增加。</p>
+<p><strong>软件环境：</strong></p>
+<p>根据不同部署方式，软件环境要求有所差异，但均基于当前主流系统与工具。</p>
+<p>（1）本地部署所需软件环境包括：</p>
+<p>l 操作系统：支持 64 位的主流操作系统，如 Ubuntu 等 Linux 发行版，或 Windows 10&#x2F;11 等 64 位桌面系统。</p>
+<p>l Python 运行环境：需安装 Anaconda 或 Miniconda，用于基于 environment.yml 创建隔离的 Python 环境。具体 Python 版本由 environment.yml 文件指定。</p>
+<p>l 依赖库：通过 environment.yml 自动安装，包括深度学习框架、Web 框架以及与 Redis 通信的相关库等，无需手动逐项安装。</p>
+<p>（2）Docker 部署所需软件环境包括：</p>
+<p>l Docker 服务：需要安装并启用 Docker。在 Windows 平台通常使用 Docker Desktop，在 Linux 平台可直接安装 Docker Engine。</p>
+<p>l Docker Compose：需要安装 Docker Compose，用于解析和执行 docker-compose.yml，管理多个容器服务的协同运行。</p>
+<p>l Redis 服务：系统运行依赖 Redis，用于缓存、任务队列或状态管理。部署时需要确保存在可用的 Redis 实例，并与应用中约定的地址和端口保持一致。Redis 可以部署在宿主机上，也可以以单独的容器形式运行。</p>
+<p>系统当前未通过环境变量进行配置，因此 Redis 连接参数和服务端口等在代码或配置文件中固定，如需调整需修改相应配置并重新部署。</p>
+<h2 id="3-3部署流程"><a href="#3-3部署流程" class="headerlink" title="3.3部署流程"></a>3.3部署流程</h2><p><strong>Conda部署方案：</strong></p>
+<p>本地部署方案为开发与调试提供了良好的透明性，便于研究者在代码层面进行修改和测试。整体流程可分为代码获取、模型准备、环境创建与服务启动几部分。</p>
+<p>首先需要将系统源代码获取到本地，例如通过版本控制系统克隆项目仓库，或直接下载安装包后解压。在项目根目录下应包含主程序 app.py、环境描述文件 environment.yml 以及用于存放模型的目录或路径配置。</p>
+<p>随后需要准备六个预训练模型文件。部署前应将模型下载或拷贝至系统约定的模型目录中，例如项目根目录下的 models&#x2F; 文件夹，或者其他在代码中指定的路径。由于系统未使用环境变量配置模型路径，因此该步骤需严格按照代码中约定的目录结构进行操作，确保运行时能够正确定位并加载模型。</p>
+<p>环境创建基于 environment.yml 完成。在目标机器上安装好 Anaconda 或 Miniconda 后，可在项目根目录执行类似命令：</p>
+<p>conda env create -f environment.yml</p>
+<p>conda activate backend</p>
+<p>环境创建完成后，所有运行系统所需的依赖库均会安装在该虚拟环境中。该方式确保了不同机器上依赖版本的一致性，便于实验结果的复现。</p>
+<p>在完成模型准备与环境创建后，用户可以在同一目录下启动服务：</p>
+<p>python app.py</p>
+<p>程序启动成功后，系统默认在本地 5000 端口监听请求。此时可在浏览器地址栏输入：</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1:5000/">http://127.0.0.1:5000</a></p>
+<p>即可访问系统界面并进行交互。如果需要在局域网中为其他终端提供访问，可以将服务绑定地址改为 0.0.0.0，并在操作系统防火墙或网关设备上放行对应端口。</p>
+<p>在本地部署过程中，若出现依赖安装失败、模型路径错误或 Redis 连接异常等问题，可首先检查 environment.yml 是否成功执行、模型目录是否完整、Redis 服务是否正常运行，再结合控制台输出日志进行排查。</p>
+<p><strong>Docker</strong> <strong>部署方案</strong>:</p>
+<p>Docker 部署方案通过容器技术将运行时环境与应用代码统一封装，适合在多台机器或异构操作系统之间迁移与部署同一套系统。其核心思想是：在一个标准化的镜像中包含系统所需的操作系统依赖、Python 运行时及相关库，用户仅需拉取或构建镜像并启动容器即可。</p>
+<p>在部署前，需要确保目标机器已正确安装 Docker 与 Docker Compose，并确保 Redis 服务可用。Windows 环境可通过 Docker Desktop 提供的 Linux 容器模式运行本系统；Linux 环境则可直接依靠系统服务运行 Docker。两类平台在使用方式上基本一致，仅在宿主机目录路径的书写形式上略有差异。</p>
+<p>模型文件的准备方式与本地部署基本相同，同样需要将六个预训练模型下载或拷贝到宿主机指定的目录。该目录会通过 docker-compose.yml 中的卷挂载机制映射到容器内部的固定路径，例如将宿主机的 .&#x2F;models 映射为容器内的 &#x2F;models。应用在容器中加载模型时，只需访问容器内部的路径；对于部署者而言，只需保证宿主机的模型目录结构与 docker-compose.yml 中的配置保持一致即可。</p>
+<p>在完成上述准备后，用户可以在项目根目录使用 Docker Compose 启动系统：</p>
+<p>docker compose up -d –build</p>
+<p>该命令会在必要时根据 Dockerfile 构建应用镜像，并以后台模式启动所有在 docker-compose.yml 中定义的服务（包括核心应用服务以及可能存在的辅助服务）。待容器启动完成后，系统同样在宿主机的 5000 端口提供 Web 服务，可以通过 <a target="_blank" rel="noopener" href="http://127.0.0.1:5000/">http://127.0.0.1:5000</a> 进行访问。若部署在远程服务器上，可在浏览器中将 127.0.0.1 替换为服务器的 IP 地址或域名。</p>
+<p>在 Docker 部署模式下，Windows 与 Linux 平台均可直接使用上述命令完成部署。Windows 环境下，Docker Desktop 默认运行 Linux 容器，应用镜像与 Linux 环境保持一致；Linux 环境下则无需额外虚拟化层。这样，可以在不修改应用代码与配置的前提下，保证不同平台上的系统行为保持一致。</p>
+<p>为便于日常运维与问题排查，可以使用 Docker 提供的日志与状态查询命令。例如：</p>
+<p>docker compose ps</p>
+<p>docker compose logs -f</p>
+<p>前者用于查看各服务容器的运行状态，后者用于实时查看日志输出，有助于定位模型加载失败、Redis 连接异常等运行时问题。如需停止服务，可执行：</p>
+<p>docker compose down</p>
+<p>释放相关容器资源。</p>
+<p>需要强调的是，当前 Docker 部署中同样未使用环境变量，Redis 地址、模型路径和服务端口等均在 Docker 配置和应用代码中固定。若需在实际部署中调整端口映射或修改 Redis 服务地址，可在 docker-compose.yml 或应用配置文件中进行相应修改，然后重新构建镜像或重启服务。</p>
+<h2 id="3-4常见问题与部署建议"><a href="#3-4常见问题与部署建议" class="headerlink" title="3.4常见问题与部署建议"></a>3.4常见问题与部署建议</h2><p>在实际部署过程中，常见问题多集中于模型路径错误、依赖环境不完整以及 Redis 服务配置不当。对于本地部署，如遇到模型无法加载的问题，可优先检查模型目录下文件是否齐全、文件名是否与代码约定一致。对于 Docker 部署，则需同时核对宿主机模型目录与容器中挂载路径之间的映射关系。</p>
+<p>在 Redis 相关问题方面，应确认 Redis 服务已启动且监听在正确端口，并与应用中写定的地址一致。如在 Docker 环境中使用单独的 Redis 容器，需要根据容器网络配置调整连接地址。</p>
+<p>建议阅读项目中的<strong>README</strong> 文件，执行示例命令以及必要的脚本。</p>
+<p>综合来看，本系统的部署支持本地环境和 Docker 环境两种路径。本地部署强调对环境与代码的直接掌控，适合开发与调试场景；Docker 部署强调环境的一致性和跨平台可移植性，适合在多台机器、不同操作系统和多人协作的场景下快速复现和上线。</p>
+<h1 id="4-系统各模块使用操作说明"><a href="#4-系统各模块使用操作说明" class="headerlink" title="4.系统各模块使用操作说明"></a>4.系统各模块使用操作说明</h1><p>本章面向所有使用私有化大语言模型交互工具的用户，旨在提供全面、清晰的操作指引。本工具集成了多个先进的开源大语言模型，并提供了直观的图形化界面，使得用户无需具备专业的机器学习知识，即可安全、便捷地利用大语言模型能力进行智能问答、文档分析与知识提炼。</p>
+<h2 id="4-1系统访问与初始认证模块："><a href="#4-1系统访问与初始认证模块：" class="headerlink" title="4.1系统访问与初始认证模块："></a>4.1系统访问与初始认证模块：</h2><p>启动应用程序：用户通过命令启动服务，程序启动后，会自动初始化本地服务并唤起系统默认的网页浏览器，导航至工具的本地址登录页面。</p>
+<p><img src="/../image/clip_image002.png" alt="img"></p>
+<p>图1 登录界面</p>
+<p>完成登录验证：首次使用或访问工具时，浏览器将呈现登录界面。用户需要在登录表单中输入由系统管理员分配的有效账户凭证。账户名填写在“用户名”栏目，对应的密码则需输入到“密码”栏目。默认用户名：admin 默认密码：123</p>
+<p>输入完成后，点击“登录”按钮提交验证。系统后端会将用户提交的密码经过哈希处理后，与预置的安全哈希值进行比对。验证通过后，前端界面会跳转至主工作台，并建立一个本地会话状态，允许用户进行后续操作。若验证失败，页面会明确提示“用户名或密码错误”，用户应检查输入是否正确，注意区分大小写，并确认键盘输入状态。</p>
+<h2 id="4-2主界面布局与功能区域解析："><a href="#4-2主界面布局与功能区域解析：" class="headerlink" title="4.2主界面布局与功能区域解析："></a>4.2主界面布局与功能区域解析：</h2><p>成功登录后，用户将进入应用的主工作界面。整个界面经过精心设计，划分为逻辑清晰、职责明确的三个主要区域，以支持高效的人机交互。</p>
+<p><img src="/../image/clip_image004.png" alt="img"></p>
+<p>图2 主界面布局图</p>
+<p>左侧边栏：会话管理中心，侧边栏是管理所有对话线程的核心面板。顶部显著的“新建会话”按钮用于发起一次全新的对话。下方以列表形式纵向排列所有历史会话条目，每条会话卡片展示着用户自定义的会话标题。当前处于激活状态的会话会通过高亮边框、背景色变化或图标指示等方式进行视觉强调。用户在此区域可以执行会话的创建、选择、删除等生命周期管理操作。</p>
+<p>中央主区域：对话交互与展示区，这是用户与AI进行实质性交流的核心区域。区域主体部分是一个按问答顺序、时间顺序滚动的聊天窗口，清晰展示对话的完整脉络。主区域上方提供简明的智能问答示例，消息以对话形式展现，每一条消息均包含时间戳和消息内容气泡。用户发出的消息与AI模型的回复左右或上下交替排列，形成自然的对话流。区域底部固定附着多功能组合输入框，集成了文本输入和文件上传入口，发送消息操作以回车键触发，是用户发起交互的起点。</p>
+<p>顶部工具栏：全局控制区，位于界面顶部的工具栏提供全局性的控制功能。核心组件包括模型类型选择框，支持选择本地模型和API调用模型两种方式，一个模型选择下拉菜单包括全部已集成的主流模型，用于在集成的多个大语言模型（如Qwen, Baichuan, Yi等）之间进行切换。右侧展示用户头像，可以通过点击头像的“退出”按钮，完成退出操作。</p>
+<p>侧边面板：一个设置图标（齿轮状），用于触发或收起右侧的高级设置面板。该侧边面板展开后，提供对模型生成参数（如Temperature, Top-p, Max Length等）进行精细化调节的滑块或输入控件，方便用户根据任务需求定制AI的响应风格与行为。提供当前会话的消息记录导出按钮，方便用户将对话历史导出为json或markdown格式。</p>
+<p><img src="/../image/clip_image006.png" alt="img"></p>
+<p>图3 设置面板界面图</p>
+<h2 id="4-3核心工作流：发起并管理智能对话："><a href="#4-3核心工作流：发起并管理智能对话：" class="headerlink" title="4.3核心工作流：发起并管理智能对话："></a>4.3核心工作流：发起并管理智能对话：</h2><p><strong>创建与启动新会话</strong>：当用户需要开启一个全新的、独立的话题或任务时，应点击左侧边栏顶部的“新建会话”按钮。系统会瞬时创建一个空的对话容器，并弹出创建会话名称弹窗，新创建的会话会自动成为当前活动会话，输入框随即获得焦点，等待用户输入。</p>
+<p><img src="/../image/clip_image008.png" alt="img"></p>
+<p>图4 创建会话界面图</p>
+<p><strong>执行文本问答交互</strong>：用户在主区域底部的文本输入框中直接键入问题、指令或需要讨论的文本。输入内容可以是一个简单的查询、一段需要润色的文字、一个复杂的分析任务请求，或是任何期望获得AI协助的自然语言表述。输入完成后，可通过按下键盘上的“Enter”键，或直接用鼠标点击输入框右侧的“发送”按钮来提交请求。提交后，用户输入会立即以消息气泡的形式显示在聊天窗口中，并显示为蓝色气泡。同时，系统界面会在输入框上方给出等待状态动画。模型推理完成后，其生成的回复将以“助手”标识出现在用户消息下方，完成一轮交互。用户可以基于此回复进行持续的多轮对话，模型能够有效地保持对当前会话上下文的记忆与理解。</p>
+<p><img src="/../image/clip_image010.png" alt="img"></p>
+<p>图5 文本问答交互效果图</p>
+<p><strong>实现文档分析与问答</strong>：除直接输入文本外，工具支持通过上传本地文档的方式提供更丰富的上下文信息。点击输入框旁的文件上传图标（通常显示为曲别针或文件夹图形），从本地文件系统中选择符合格式要求的文档（当前支持.txt纯文本文件和.md Markdown文件）。</p>
+<p><img src="/../image/clip_image012.png" alt="img"></p>
+<p>图6 上传文件效果图</p>
+<p>文件被选中后，前端会将其上传至后端服务器。后端服务会解析文件内容，提取出全部文本。随后，这份被提取的文本会作为一条特殊的“用户”消息（可能带有文件来源标识）插入到当前对话历史中。此后，用户可以在输入框中针对这份文档内容提出具体问题，例如要求总结、提取关键信息、翻译特定段落或基于内容进行推理。AI模型将依据已提供的完整文档文本来生成相关且准确的答复。</p>
+<h2 id="4-4高级功能应用与个性化配置"><a href="#4-4高级功能应用与个性化配置" class="headerlink" title="4.4高级功能应用与个性化配置"></a>4.4高级功能应用与个性化配置</h2><p><strong>管理多线程对话历史</strong>：工具支持并行的多会话管理能力，允许用户在不同的主题或项目间无缝切换。用户只需在左侧边栏的会话列表中点击任意一个历史会话的标题，主对话区的内容就会立即刷新为该会话的完整历史记录。用户可以在此上下文基础上继续深入交流。当某个会话不再需要时，可将鼠标悬停在该会话卡片上，点击出现的“删除”图标（通常是垃圾桶符号）来永久移除该会话及其所有历史数据。删除操作前可能会有确认提示，且删除当前活动会话时，系统会自动激活另一个现有会话。</p>
+<p><img src="/../image/clip_image013.png" alt="img"></p>
+<p>图7 会话控制界面图</p>
+<p><strong>导出对话记录以备后用</strong>：对于有保留价值的对话，工具支持将会话历史导出为便携式文件。用户需要在目标会话为活动状态时，找到界面中的“导出”功能入口（可能位于会话卡片菜单、顶部工具栏或右键菜单中）。点击后，可选择导出格式：Markdown (.md) 格式适合人类阅读、编辑或在支持Markdown的平台上发布分享；JSON (.json) 格式则完整保留了消息的结构化数据、元信息，适用于程序化分析或作为数据备份。选择格式后，浏览器会自动下载生成的文件到本地默认下载目录。具体操作流程如下图：</p>
+<p><img src="/../image/clip_image014.png" alt="img"></p>
+<p>图8 历史消息下载模块</p>
+<p><img src="/../image/clip_image016.png" alt="img"></p>
+<p>图9 生成下载链接</p>
+<p><img src="/../image/clip_image018.png" alt="img"></p>
+<p>图10 下载完成并打开文件</p>
+<p><strong>动态切换底层大语言模型</strong>：工具预装了多个不同规模与特性的大语言模型。用户可以通过顶部工具栏的下拉菜单，随时选择切换至另一个可用模型。切换动作触发后，界面可能会短暂显示“模型加载中…”的提示，所需时间取决于模型大小和硬件性能。切换成功后，后续所有新的消息生成请求都将由新选的模型处理。需要明确的是，模型切换操作不影响当前会话中已存在的历史消息的显示内容。</p>
+<p><img src="/../image/clip_image020.png" alt="img"></p>
+<p>图11 切换模型界面图</p>
+<p><strong>精细化调控模型生成行为</strong>：为了获得更符合特定任务期望的回复，用户可以调整模型的高级生成参数。通过点击顶部工具栏的设置图标，展开右侧的参数控制面板。</p>
+<p><img src="/../image/clip_image021.png" alt="img"></p>
+<p>主要可调参数包括：</p>
+<p>温度：控制生成文本的随机性。较低的数值使输出更集中、确定和可预测；较高的数值则鼓励更多样化、创造性的表达，但可能降低连贯性。</p>
+<p>最大生成长度：限制模型单次响应所能生成的最大令牌数（大致对应字数），有效防止生成过于冗长或失控的回复。</p>
+<p>Top-p（核采样）：与温度配合使用，这是一种动态选择词汇范围的概率阈值方法，能平衡生成的质量与多样性。</p>
+<p>Top-k：在每一步预测时，仅从概率最高的k个候选词中进行采样，也是一种控制随机性的方法。 用户调整这些滑块或输入框的值后，新的参数设置会即时生效，并应用于此后发起的所有生成请求，无需额外保存。不熟悉这些参数的用户保持默认设置即可获得均衡的体验。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Zheng Yufeng</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/12/20/local-llm/">http://example.com/2025/12/20/local-llm/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">Yufeng's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/LLM/">LLM</a><a class="post-meta__tags" href="/tags/Interactive-system/">Interactive system</a></div><div class="post-share"><div class="social-share" data-image="/image/local_llm.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/12/20/local-llm2/" title="local_llm（详细设计）"><img class="cover" src="/image/local_llm.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">local_llm（详细设计）</div></div><div class="info-2"><div class="info-item-1">详细设计：使用Flask+VUE搭建本地大语言模型</div></div></div></a><a class="pagination-related" href="/2025/12/19/2025-12-19-DYY(%E4%B8%89)/" title="DYY(三)"><img class="cover" src="/image/watermark_text.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">DYY(三)</div></div><div class="info-2"><div class="info-item-1">大语言模型水印展示平台</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/12/20/local-llm2/" title="local_llm（详细设计）"><img class="cover" src="/image/local_llm.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-20</div><div class="info-item-2">local_llm（详细设计）</div></div><div class="info-2"><div class="info-item-1">详细设计：使用Flask+VUE搭建本地大语言模型</div></div></div></a><a class="pagination-related" href="/2025/12/19/2025-12-19-DYY(%E4%B8%89)/" title="DYY(三)"><img class="cover" src="/image/watermark_text.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-19</div><div class="info-item-2">DYY(三)</div></div><div class="info-2"><div class="info-item-1">大语言模型水印展示平台</div></div></div></a><a class="pagination-related" href="/2025/12/19/DYY2/" title="DYY(二)"><img class="cover" src="/image/watermark_text.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-19</div><div class="info-item-2">DYY(二)</div></div><div class="info-2"><div class="info-item-1">大语言模型水印展示平台</div></div></div></a><a class="pagination-related" href="/2025/12/19/2025-12-19-DYY(%E4%B8%80)/" title="DYY(一)"><img class="cover" src="/image/watermark_text.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-19</div><div class="info-item-2">DYY(一)</div></div><div class="info-2"><div class="info-item-1">大语言模型水印展示平台</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zheng Yufeng</div><div class="author-info-description">计算机技术专业，人工智能安全领域</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Zheng-Yu-feng"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Zheng-Yu-feng" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:zhengyufeng1010@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">此博客正处于完善阶段，期待您的宝贵意见</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1. 概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">2. 系统介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2"><span class="toc-number">3.</span> <span class="toc-text">3. 系统部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1%E9%83%A8%E7%BD%B2%E6%9E%B6%E6%9E%84%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%BF%B0"><span class="toc-number">3.1.</span> <span class="toc-text">3.1部署架构与运行模式概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E7%B3%BB%E7%BB%9F%E8%BD%AF%E7%A1%AC%E4%BB%B6%E7%8E%AF%E5%A2%83%E8%A6%81%E6%B1%82"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 系统软硬件环境要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B"><span class="toc-number">3.3.</span> <span class="toc-text">3.3部署流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E4%B8%8E%E9%83%A8%E7%BD%B2%E5%BB%BA%E8%AE%AE"><span class="toc-number">3.4.</span> <span class="toc-text">3.4常见问题与部署建议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%B3%BB%E7%BB%9F%E5%90%84%E6%A8%A1%E5%9D%97%E4%BD%BF%E7%94%A8%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E"><span class="toc-number">4.</span> <span class="toc-text">4.系统各模块使用操作说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1%E7%B3%BB%E7%BB%9F%E8%AE%BF%E9%97%AE%E4%B8%8E%E5%88%9D%E5%A7%8B%E8%AE%A4%E8%AF%81%E6%A8%A1%E5%9D%97%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">4.1系统访问与初始认证模块：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2%E4%B8%BB%E7%95%8C%E9%9D%A2%E5%B8%83%E5%B1%80%E4%B8%8E%E5%8A%9F%E8%83%BD%E5%8C%BA%E5%9F%9F%E8%A7%A3%E6%9E%90%EF%BC%9A"><span class="toc-number">4.2.</span> <span class="toc-text">4.2主界面布局与功能区域解析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3%E6%A0%B8%E5%BF%83%E5%B7%A5%E4%BD%9C%E6%B5%81%EF%BC%9A%E5%8F%91%E8%B5%B7%E5%B9%B6%E7%AE%A1%E7%90%86%E6%99%BA%E8%83%BD%E5%AF%B9%E8%AF%9D%EF%BC%9A"><span class="toc-number">4.3.</span> <span class="toc-text">4.3核心工作流：发起并管理智能对话：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD%E5%BA%94%E7%94%A8%E4%B8%8E%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="toc-number">4.4.</span> <span class="toc-text">4.4高级功能应用与个性化配置</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/20/local-llm2/" title="local_llm（详细设计）"><img src="/image/local_llm.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="local_llm（详细设计）"/></a><div class="content"><a class="title" href="/2025/12/20/local-llm2/" title="local_llm（详细设计）">local_llm（详细设计）</a><time datetime="2025-12-20T08:05:15.000Z" title="发表于 2025-12-20 16:05:15">2025-12-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/20/local-llm/" title="local_llm（用户操作手册）"><img src="/image/local_llm.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="local_llm（用户操作手册）"/></a><div class="content"><a class="title" href="/2025/12/20/local-llm/" title="local_llm（用户操作手册）">local_llm（用户操作手册）</a><time datetime="2025-12-20T07:04:14.000Z" title="发表于 2025-12-20 15:04:14">2025-12-20</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/image/local_llm.png);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By Zheng Yufeng</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"></div></div></body></html>

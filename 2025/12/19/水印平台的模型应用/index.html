@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>水印平台的模型应用 | Yufeng&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="平台需要兼容四种生成式智能服务，计划采用相应模型适配服务，本文记录调研结果 1. 决策问答生成核心需求：理解复杂问题，生成支持决策的答案或分析。    模型类型 模型名称 关键特点 &#x2F; 适用场景 来源&#x2F;地址    通用基础模型 T5 多任务处理能力强，适合问答生成。需大量计算资源。 GitHub    BERT 上下文理解能力强大，但生成能力有限，更适合理解与分类。 GitHu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="水印平台的模型应用">
+<meta property="og:url" content="http://example.com/2025/12/19/%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Yufeng&#39;s blog">
+<meta property="og:description" content="平台需要兼容四种生成式智能服务，计划采用相应模型适配服务，本文记录调研结果 1. 决策问答生成核心需求：理解复杂问题，生成支持决策的答案或分析。    模型类型 模型名称 关键特点 &#x2F; 适用场景 来源&#x2F;地址    通用基础模型 T5 多任务处理能力强，适合问答生成。需大量计算资源。 GitHub    BERT 上下文理解能力强大，但生成能力有限，更适合理解与分类。 GitHu">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-19T08:16:51.000Z">
+<meta property="article:modified_time" content="2026-08-31T03:16:37.922Z">
+<meta property="article:author" content="Zheng Yufeng">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Yufeng's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yufeng&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-水印平台的模型应用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/12/19/%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2025-12-19T08:16:51.000Z" itemprop="datePublished">2025-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      水印平台的模型应用
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>平台需要兼容四种生成式智能服务，计划采用相应模型适配服务，本文记录调研结果</p>
+<h3 id="1-决策问答生成"><a href="#1-决策问答生成" class="headerlink" title="1. 决策问答生成"></a><strong>1. 决策问答生成</strong></h3><p><strong>核心需求</strong>：理解复杂问题，生成支持决策的答案或分析。</p>
+<table>
+<thead>
+<tr>
+<th>模型类型</th>
+<th>模型名称</th>
+<th>关键特点 &#x2F; 适用场景</th>
+<th>来源&#x2F;地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>通用基础模型</strong></td>
+<td><strong>T5</strong></td>
+<td>多任务处理能力强，适合问答生成。需大量计算资源。</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/google-research/text-to-text-transfer-transformer">GitHub</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>BERT</strong></td>
+<td>上下文理解能力强大，但生成能力有限，更适合理解与分类。</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/google-research/bert">GitHub</a></td>
+</tr>
+<tr>
+<td><strong>Hugging Face 专项模型</strong></td>
+<td><strong>PlanRAG</strong></td>
+<td>专为决策设计，采用“先规划后检索生成”范式，适合基于数据的复杂决策。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/papers/2406.12430">Hugging Face</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>abhitopia&#x2F;question-answer-generation</strong></td>
+<td>基于T5的多任务模型，同时擅长<strong>问答</strong>和<strong>问题生成</strong>，适应性强。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/abhitopia/question-answer-generation">Hugging Face</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Generative QA Models</strong></td>
+<td>泛指一类能生成连贯、详细答案的模型，适合需要丰富语境解释的决策场景。</td>
+<td><a target="_blank" rel="noopener" href="https://discuss.huggingface.co/t/selecting-a-chatbot-model-for-question-answering-qa/53120">社区讨论</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="2-文本摘要生成"><a href="#2-文本摘要生成" class="headerlink" title="2. 文本摘要生成"></a><strong>2. 文本摘要生成</strong></h3><p><strong>核心需求</strong>：从长文本中提取或概括核心信息，生成简洁摘要。</p>
+<table>
+<thead>
+<tr>
+<th>模型类型</th>
+<th>模型名称</th>
+<th>关键特点 &#x2F; 适用场景</th>
+<th>来源&#x2F;地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>通用基础模型</strong></td>
+<td><strong>BART</strong></td>
+<td>在文本生成和摘要任务中表现优秀，需大量计算资源。</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/facebookresearch/fairseq/tree/main/examples/bart">GitHub</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Pegasus</strong></td>
+<td>专为摘要任务设计，性能优越，训练和推理资源需求高。</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/google-research/pegasus">GitHub</a></td>
+</tr>
+<tr>
+<td><strong>Hugging Face 专项模型</strong></td>
+<td><strong>facebook&#x2F;bart-large-cnn</strong></td>
+<td>基于BART，在新闻等文本的<strong>摘要生成</strong>上常用且效果良好。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/facebook/bart-large-cnn">Hugging Face</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>pszemraj&#x2F;led-large-book-summary</strong></td>
+<td>基于<strong>LED</strong>架构，专为<strong>处理长文本</strong>（如书籍）摘要设计。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/pszemraj/led-large-book-summary">Hugging Face</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>financial-summarization-pegasus</strong></td>
+<td>基于Pegasus，专门针对<strong>金融新闻和报告</strong>的摘要任务。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/human-centered-summarization/financial-summarization-pegasus">Hugging Face</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="3-语言翻译"><a href="#3-语言翻译" class="headerlink" title="3. 语言翻译"></a><strong>3. 语言翻译</strong></h3><p><strong>核心需求</strong>：实现高质量、准确的双语或多语翻译。</p>
+<table>
+<thead>
+<tr>
+<th>模型类型</th>
+<th>模型名称</th>
+<th>关键特点 &#x2F; 适用场景</th>
+<th>来源&#x2F;地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>通用基础模型</strong></td>
+<td><strong>MarianMT</strong></td>
+<td>多语言支持，翻译质量高，部分语言对需更多数据。</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Helsinki-NLP/OPUS-MT-train">GitHub</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>mBART</strong></td>
+<td>多语言支持，强大的生成能力，资源需求较高。</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/pytorch/fairseq/tree/main/examples/mbart">GitHub</a></td>
+</tr>
+<tr>
+<td><strong>Hugging Face 专项模型</strong></td>
+<td><strong>opus-mt-zh-en</strong></td>
+<td>MarianMT系列，专门用于<strong>中文到英文</strong>的翻译。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/Helsinki-NLP/opus-mt-zh-en">Hugging Face</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>opus-mt-en-zh</strong></td>
+<td>MarianMT系列，专门用于<strong>英文到中文</strong>的翻译。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/Helsinki-NLP/opus-mt-en-zh">Hugging Face</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="4-新闻报道-标题生成"><a href="#4-新闻报道-标题生成" class="headerlink" title="4. 新闻报道&#x2F;标题生成"></a><strong>4. 新闻报道&#x2F;标题生成</strong></h3><p><strong>核心需求</strong>：根据关键信息或内容，生成完整的新闻报道或吸引人的标题。</p>
+<table>
+<thead>
+<tr>
+<th>模型类型</th>
+<th>模型名称</th>
+<th>关键特点 &#x2F; 适用场景</th>
+<th>来源&#x2F;地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>通用基础模型</strong></td>
+<td><strong>T5</strong></td>
+<td>通用性强，能够生成高质量文本，计算资源需求大。</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/google-research/text-to-text-transfer-transformer">GitHub</a></td>
+</tr>
+<tr>
+<td></td>
+<td>Qwen2.5</td>
+<td>通用性强，能够生成丰富详细的回答，适用于新闻稿生成。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/Qwen/Qwen2.5-7B">Qwen&#x2F;Qwen2.5-7B · Hugging Face</a></td>
+</tr>
+<tr>
+<td><strong>Hugging Face 专项模型</strong></td>
+<td><strong>czearing&#x2F;article-title-generator</strong></td>
+<td>基于T5，根据文章内容<strong>生成标题</strong>，训练于Medium文章。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/czearing/article-title-generator">Hugging Face</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>fabiochiu&#x2F;t5-base-medium-title-generation</strong></td>
+<td>基于T5，为Medium文章内容<strong>生成标题</strong>。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/fabiochiu/t5-base-medium-title-generation">Hugging Face</a></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>VBART-XLarge-Title-Generation-from-News</strong></td>
+<td>基于VBART，专为<strong>从新闻生成标题</strong>而优化（主要针对土耳其语，架构可参考）。</td>
+<td><a target="_blank" rel="noopener" href="https://huggingface.co/vngrs-ai/VBART-XLarge-Title-Generation-from-News">Hugging Face</a></td>
+</tr>
+</tbody></table>
+<h3 id="数据集收集"><a href="#数据集收集" class="headerlink" title="数据集收集"></a>数据集收集</h3><p>英文数据集：</p>
+<p>新闻 <a target="_blank" rel="noopener" href="https://www.kaggle.com/datasets/gpreda/bbc-news">BBC News</a></p>
+<p>翻译 <a target="_blank" rel="noopener" href="https://huggingface.co/datasets/FradSer/DeepSeek-R1-Distilled-Translate-en-zh_CN-39k-Alpaca-GPT4-without-Think">FradSer&#x2F;DeepSeek-R1-Distilled-Translate-en-zh_CN-39k-Alpaca-GPT4-without-Think · Datasets at Hugging Face</a></p>
+<p>决策 <a target="_blank" rel="noopener" href="https://github.com/yizhongw/self-instruct/tree/main/data">self-instruct&#x2F;data at main · yizhongw&#x2F;self-instruct · GitHub</a></p>
+<p>摘要 <a target="_blank" rel="noopener" href="https://github.com/Mzzzhu/CMNEE">https://github.com/Mzzzhu/CMNEE</a></p>
+<p>中文数据集：</p>
+<p>翻译：<a target="_blank" rel="noopener" href="https://huggingface.co/datasets/FradSer/DeepSeek-R1-Distilled-Translate-en-zh_CN-39k-Alpaca-GPT4-without-Think">FradSer&#x2F;DeepSeek-R1-Distilled-Translate-en-zh_CN-39k-Alpaca-GPT4-without-Think · Datasets at Hugging Face</a></p>
+<p>决策：<a target="_blank" rel="noopener" href="https://huggingface.co/datasets/BAAI/COIG/tree/main">BAAI&#x2F;COIG at main</a></p>
+<p>新闻：<a target="_blank" rel="noopener" href="https://github.com/lxj5957/CLTS-Dataset">https://github.com/lxj5957/CLTS-Dataset</a></p>
+<p>军事：<a target="_blank" rel="noopener" href="https://github.com/Mzzzhu/CMNEE">https://github.com/Mzzzhu/CMNEE</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/12/19/%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/" data-id="cmtgo3f780000jlp1d70nehez" data-title="水印平台的模型应用" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/12/19/%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%8C%87%E6%A0%87%E6%B5%8B%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          水印平台的指标测试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/12/19/%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%AE%97%E6%B3%95%E9%9B%86%E6%88%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">水印平台的算法集成</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LLM/" style="font-size: 10px;">LLM</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">十二月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/12/21/%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C/">操作手册</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/20/%E8%AF%A6%E7%BB%86%E8%AE%BE%E8%AE%A1/">详细设计</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/19/%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%8C%87%E6%A0%87%E6%B5%8B%E8%AF%95/">水印平台的指标测试</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/19/%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%BA%94%E7%94%A8/">水印平台的模型应用</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/19/%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%AE%97%E6%B3%95%E9%9B%86%E6%88%90/">水印平台的算法集成</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 Zheng Yufeng<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+---
+title: 打包/迁移环境
+date: 2024-12-19 16:55:05
+tags:
+  - tool
+---
+
+# Conda打包迁移环境
+
+在该目标环境激活状态下：
+
+（1）导出环境到.yml文件：`conda env export --no-builds > environment.yml`
+
+重建：`conda env create -f environment.yml`
+
+(2) 导出环境到.txt文件：`conda list --explicit > environment.txt`
+
+重建：`conda create --name new_env_name --file environment.txt`
+
+或者使用pip打包：`pip freeze > requirements.txt`
+
+重建：`pip install -r requirements.txt`

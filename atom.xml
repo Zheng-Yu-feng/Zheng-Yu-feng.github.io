@@ -127,4 +127,27 @@
     
   </entry>
   
+  <entry>
+    <title>打包/迁移环境</title>
+    <link href="https://zheng-yu-feng.github.io/2024/12/19/Conda%E3%80%81pip%E6%89%93%E5%8C%85%E8%BF%81%E7%A7%BB%E7%8E%AF%E5%A2%83/"/>
+    <id>https://zheng-yu-feng.github.io/2024/12/19/Conda%E3%80%81pip%E6%89%93%E5%8C%85%E8%BF%81%E7%A7%BB%E7%8E%AF%E5%A2%83/</id>
+    <published>2024-12-19T08:55:05.000Z</published>
+    <updated>2026-09-02T13:20:10.014Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Conda打包迁移环境"><a href="#Conda打包迁移环境" class="headerlink" title="Conda打包迁移环境"></a>Conda打包迁移环境</h1><p>在该目标环境激活状态下：</p><p>（1）导出环境到.yml文件：<code>conda env export --no-builds &gt; environment.yml</code></p><p>重建：<code>conda env create -f environment.yml</code></p><p>(2) 导出环境到.txt文件：<code>conda list --explicit &gt; environment.txt</code></p><p>重建：<code>conda create --name new_env_name --file environment.txt</code></p><p>或者使用pip打包：<code>pip freeze &gt; requirements.txt</code></p><p>重建：<code>pip install -r requirements.txt</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Conda打包迁移环境&quot;&gt;&lt;a href=&quot;#Conda打包迁移环境&quot; class=&quot;headerlink&quot; title=&quot;Conda打包迁移环境&quot;&gt;&lt;/a&gt;Conda打包迁移环境&lt;/h1&gt;&lt;p&gt;在该目标环境激活状态下：&lt;/p&gt;
+&lt;p&gt;（1）导出环境到.yml文件</summary>
+      
+    
+    
+    
+    
+    <category term="tool" scheme="https://zheng-yu-feng.github.io/tags/tool/"/>
+    
+  </entry>
+  
 </feed>

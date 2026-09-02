@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.44.0" theme-name="Stellar" theme-version="1.44.0">
   
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin><link rel="preconnect" href="https://unpkg.com" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -17,22 +17,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>标签：LLM - Yufeng's blog</title>
+  <title>迁移环境 - Yufeng's blog</title>
 
-  <meta name="description" content="计算机技术专业，人工智能安全领域">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yufeng's blog">
-<meta property="og:url" content="https://zheng-yu-feng.github.io/tags/LLM/">
+  <meta name="description" content="Conda打包迁移环境在该目标环境激活状态下： （1）导出环境到.yml文件：conda env export --no-builds &gt; environment.yml 重建：conda env create -f environment.yml (2) 导出环境到.txt文件：conda list --explicit &gt; environment.txt 重建：conda crea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="迁移环境">
+<meta property="og:url" content="https://zheng-yu-feng.github.io/2024/12/19/%E8%BF%81%E7%A7%BB%E7%8E%AF%E5%A2%83/">
 <meta property="og:site_name" content="Yufeng's blog">
-<meta property="og:description" content="计算机技术专业，人工智能安全领域">
+<meta property="og:description" content="Conda打包迁移环境在该目标环境激活状态下： （1）导出环境到.yml文件：conda env export --no-builds &gt; environment.yml 重建：conda env create -f environment.yml (2) 导出环境到.txt文件：conda list --explicit &gt; environment.txt 重建：conda crea">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://www.gravatar.com/avatar/2789dc0497448f0e77e0bc6edfcb5435">
+<meta property="article:published_time" content="2024-12-19T08:55:05.000Z">
+<meta property="article:modified_time" content="2026-09-02T13:28:32.316Z">
 <meta property="article:author" content="Zheng Yufeng">
+<meta property="article:tag" content="tool">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.gravatar.com/avatar/2789dc0497448f0e77e0bc6edfcb5435">
+<meta name="twitter:image" content="https://www.gravatar.com/avatar/2789dc0497448f0e77e0bc6edfcb5435"><meta name="twitter:title" content="迁移环境">
   
   
-  
+  <meta name="keywords" content="tool">
 
   <!-- feed -->
   
@@ -53,7 +56,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"https://zheng-yu-feng.github.io","author":{"@type":"Person","name":"Zheng Yufeng","sameAs":[],"image":"https://www.gravatar.com/avatar/2789dc0497448f0e77e0bc6edfcb5435"},"name":"Yufeng's blog","description":"计算机技术专业，人工智能安全领域","url":"https://zheng-yu-feng.github.io"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Zheng Yufeng","sameAs":[],"image":"https://www.gravatar.com/avatar/2789dc0497448f0e77e0bc6edfcb5435"},"dateCreated":"2024-12-19T16:55:05+08:00","dateModified":"2026-09-02T21:28:32+08:00","datePublished":"2024-12-19T16:55:05+08:00","description":"Conda打包迁移环境在该目标环境激活状态下：\n（1）导出环境到.yml文件：conda env export --no-builds &gt; environment.yml\n重建：conda env create -f environment.yml\n(2) 导出环境到.txt文件：conda list --explicit &gt; environment.txt\n重建：conda c...","headline":"迁移环境","mainEntityOfPage":{"@type":"WebPage","@id":"https://zheng-yu-feng.github.io/2024/12/19/%E8%BF%81%E7%A7%BB%E7%8E%AF%E5%A2%83/"},"publisher":{"@type":"Organization","name":"Zheng Yufeng","sameAs":[],"image":"https://www.gravatar.com/avatar/2789dc0497448f0e77e0bc6edfcb5435","logo":{"@type":"ImageObject","url":"https://www.gravatar.com/avatar/2789dc0497448f0e77e0bc6edfcb5435"}},"url":"https://zheng-yu-feng.github.io/2024/12/19/%E8%BF%81%E7%A7%BB%E7%8E%AF%E5%A2%83/","keywords":"tool","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"]}</script>
   
 
   <!-- icons.yml 驱动的 CSS 装饰图标 -->
@@ -72,7 +75,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --></head>
-<body><div id="l_cover"></div><div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left leftbar-card" data-ui-surface="card"><div class="sidebg"></div><div class="leftbar-container">
+<body><div id="l_cover"></div><div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left leftbar-card" data-ui-surface="card"><div class="sidebg"></div><div class="leftbar-container">
 
 
 
@@ -152,6 +155,8 @@
 
 </nav>
 </div>
+
+
 
 <widget class="widget-wrapper slide-up recent-widget">
   
@@ -298,22 +303,52 @@
 </div></aside><div class="l_main" id="main" data-ui-surface="content">
 
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg"></div><img no-lazy class="avatar" src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Yufeng's blog</div><div class="sub cap">计算机技术 · 人工智能安全</div></a></div></header>
-
- 
 
 
 
 
+<div class="article-banner-wrap slide-up"><div class="article banner top">
+  <div class="content">
+    
+    <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a>
+</div><div class="right"><span class="cap reading">87 字 · 预计阅读 1 分钟</span></div></div><div class="meta-row">
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-12-19T08:55:05.000Z">2024-12-19</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-09-02T13:28:32.316Z">2026-09-02</time></span></div>
+</div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>迁移环境</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div></div>
+<article class="md-text content slide-up"><h1 id="Conda打包迁移环境"><a href="#Conda打包迁移环境" class="headerlink" title="Conda打包迁移环境"></a>Conda打包迁移环境</h1><p>在该目标环境激活状态下：</p>
+<p>（1）导出环境到.yml文件：<code>conda env export --no-builds &gt; environment.yml</code></p>
+<p>重建：<code>conda env create -f environment.yml</code></p>
+<p>(2) 导出环境到.txt文件：<code>conda list --explicit &gt; environment.txt</code></p>
+<p>重建：<code>conda create --name new_env_name --file environment.txt</code></p>
+<p>或者使用pip打包：<code>pip freeze &gt; requirements.txt</code></p>
+<p>重建：<code>pip install -r requirements.txt</code></p>
+</article>
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">近期发布</a><a class="active" href="/tags/">标签：LLM</a><a href="/archives/">归档</a><a class="active" href="/tags/">标签</a><a href="/archives/">归档</a></nav></div></div></div>
+<div class="article-tags slide-up"><a class="tag" href="/tags/tool/"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>tool</a></div>
 
-<div class="post-list post"><div class="post-card-wrap slide-up"><a class="post-card post card-hover card-hover--spotlight card-hover--tilt" href="/2025/12/19/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E6%B0%B4%E5%8D%B0%E5%B9%B3%E5%8F%B0%EF%BC%88%E7%AE%97%E6%B3%95%E9%9B%86%E6%88%90%EF%BC%89/">
-<article class="md-text"><h2 class="post-title">大语言模型水印平台（算法集成）</h2><div class="excerpt"><p>水印算法集成
-1、集成框架这是一个基于工厂模式+模板方法模式+策略模式 的大语言模型水印框架。设计上借鉴了Hugging Face Transformers的AutoClass机制，专门针对水印算法场景进行了定制。
-（1）核心组件：
-12345678...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg class="icon" data-icon="default:calendar" aria-hidden="true"></svg><time datetime="2025-12-19T07:04:00.000Z">2025-12-19</time></span><span class="card-tags"><span class="cap tag-chip"><svg class="icon" data-icon="default:hashtag" aria-hidden="true"></svg>LLM</span></span></div></article>
-</a></div></div>
+<div class="article-footer slide-up">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/12/19/Conda%E3%80%81pip%E6%89%93%E5%8C%85%E8%BF%81%E7%A7%BB%E7%8E%AF%E5%A2%83/">打包/迁移环境</a></div><div class="item" id="next"></div></section></div>
+
 
 
 
@@ -322,7 +357,20 @@
 <footer class="page-footer slide-up footnote"><hr><div class="text"><p>本站由 <a href="/">Zheng Yufeng</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.44.0">Stellar 1.44.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right" data-ui-surface="sidebar"><div class="widgets">
-<widget class="widget-wrapper slide-up tagcloud"><div class="widget-header dis-select"><span class="name">标签云</span></div><div class="widget-body fs14"><a href="/tags/Engineering-Practice/" style="font-size: 24px;" class="tag -10">Engineering Practice</a> <a href="/tags/LLM/" style="font-size: 12px;" class="tag -0">LLM</a> <a href="/tags/LLM-watermark/" style="font-size: 24px;" class="tag -10">LLM watermark</a> <a href="/tags/tool/" style="font-size: 24px;" class="tag -10">tool</a></div></widget>
+
+
+<widget class="widget-wrapper slide-up toc" id="data-toc" collapse="false">
+  
+    <div class="widget-header dis-select">
+      <span class="name">本文目录</span>
+      <a class="cap-action" onclick="sidebar.toggleTOC()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a>
+    </div>
+  
+  <div class="widget-body"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-1"><a class="toc-link" href="#Conda%E6%89%93%E5%8C%85%E8%BF%81%E7%A7%BB%E7%8E%AF%E5%A2%83"><span class="toc-text">Conda打包迁移环境</span></a></li></ol></div>
+  <div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" fill-rule="evenodd" d="M11.9426 1.25H12.0574C14.3658 1.24999 16.1748 1.24998 17.5863 1.43975C19.031 1.63399 20.1711 2.03933 21.0659 2.93414C21.9607 3.82895 22.366 4.96897 22.5603 6.41371C22.75 7.82519 22.75 9.63423 22.75 11.9426V12.0574C22.75 14.3658 22.75 16.1748 22.5603 17.5863C22.366 19.031 21.9607 20.1711 21.0659 21.0659C20.1711 21.9607 19.031 22.366 17.5863 22.5603C16.1748 22.75 14.3658 22.75 12.0574 22.75H11.9426C9.63423 22.75 7.82519 22.75 6.41371 22.5603C4.96897 22.366 3.82895 21.9607 2.93414 21.0659C2.03933 20.1711 1.63399 19.031 1.43975 17.5863C1.24998 16.1748 1.24999 14.3658 1.25 12.0574V11.9426C1.24999 9.63423 1.24998 7.82519 1.43975 6.41371C1.63399 4.96897 2.03933 3.82895 2.93414 2.93414C3.82895 2.03933 4.96897 1.63399 6.41371 1.43975C7.82519 1.24998 9.63423 1.24999 11.9426 1.25ZM6.61358 2.92637C5.33517 3.09825 4.56445 3.42514 3.9948 3.9948C3.42514 4.56445 3.09825 5.33517 2.92637 6.61358C2.75159 7.91356 2.75 9.62177 2.75 12C2.75 14.3782 2.75159 16.0864 2.92637 17.3864C3.09825 18.6648 3.42514 19.4355 3.9948 20.0052C4.56445 20.5749 5.33517 20.9018 6.61358 21.0736C7.91356 21.2484 9.62177 21.25 12 21.25C14.3782 21.25 16.0864 21.2484 17.3864 21.0736C18.6648 20.9018 19.4355 20.5749 20.0052 20.0052C20.5749 19.4355 20.9018 18.6648 21.0736 17.3864C21.2484 16.0864 21.25 14.3782 21.25 12C21.25 9.62177 21.2484 7.91356 21.0736 6.61358C20.9018 5.33517 20.5749 4.56445 20.0052 3.9948C19.4355 3.42514 18.6648 3.09825 17.3864 2.92637C16.0864 2.75159 14.3782 2.75 12 2.75C9.62177 2.75 7.91356 2.75159 6.61358 2.92637ZM12 9.56066L9.53033 12.0303C9.23744 12.3232 8.76256 12.3232 8.46967 12.0303C8.17678 11.7374 8.17678 11.2626 8.46967 10.9697L11.4697 7.96967C11.7626 7.67678 12.2374 7.67678 12.5303 7.96967L15.5303 10.9697C15.8232 11.2626 15.8232 11.7374 15.5303 12.0303C15.2374 12.3232 14.7626 12.3232 14.4697 12.0303L12 9.56066ZM12 13.5607L9.53033 16.0303C9.23744 16.3232 8.76256 16.3232 8.46967 16.0303C8.17678 15.7374 8.17678 15.2626 8.46967 14.9697L11.4697 11.9697C11.7626 11.6768 12.2374 11.6768 12.5303 11.9697L15.5303 14.9697C15.8232 15.2626 15.8232 15.7374 15.5303 16.0303C15.2374 16.3232 14.7626 16.3232 14.4697 16.0303L12 13.5607Z" clip-rule="evenodd"/></svg><span>回到顶部</span></a></div>
+</widget>
+
+
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
@@ -336,7 +384,7 @@
 
 <script type="text/javascript">
   window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
-  window.canonical["param"] = {"permalink":null,"checklink":"/js/plugins/video.js"};
+  window.canonical["param"] = {"permalink":"https://zheng-yu-feng.github.io/2024/12/19/%E8%BF%81%E7%A7%BB%E7%8E%AF%E5%A2%83/","checklink":"/js/plugins/video.js"};
   // Fix: Ensure page is at the correct top position on data load
   if (history.scrollRestoration) {
     history.scrollRestoration = 'auto';

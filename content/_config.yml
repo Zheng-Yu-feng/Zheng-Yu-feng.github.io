@@ -71,6 +71,9 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  文章: articles
+  项目: projects
+  工具: tools
 tag_map:
 
 # Metadata elements
@@ -113,18 +116,28 @@ theme_config:
       - id: post
         theme: '#18a999'
         icon: default:documents
-        title: 文章
+        title: 博客
         url: /
-      - id: archives
+      - id: articles
         theme: '#3b82f6'
         icon: default:documents
-        title: 归档
-        url: /archives/
-      - id: tags
+        title: 文章
+        url: /articles/
+      - id: projects
+        theme: '#8b5cf6'
+        icon: default:category
+        title: 项目
+        url: /projects/
+      - id: tools
         theme: '#f59e0b'
-        icon: default:hashtag
-        title: 标签
-        url: /tags/
+        icon: default:monitor
+        title: 工具
+        url: /tools/
+      - id: about
+        theme: '#ef4444'
+        icon: default:shield-user
+        title: 关于
+        url: /about/
   site_tree:
     home:
       leftbar: welcome, recent
@@ -133,8 +146,7 @@ theme_config:
       leftbar: welcome, recent
       rightbar: tagcloud
       nav_tabs:
-        标签: /tags/
-        归档: /archives/
+        专栏: /columns/
     post:
       leftbar: related, recent
       rightbar: toc
@@ -149,6 +161,9 @@ theme_config:
     local_search:
       field: all
       content: true
+  inject:
+    head:
+      - '<style>.l_body.index .navbar.top nav.post a[href="/categories/"]{display:none}</style>'
   style:
     prefers_theme: light
     font-family:
